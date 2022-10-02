@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/abc_tech
+    username: root
+    password: Fiap1234
+  jpa:
+    hibernate:
+      ddl_auto: none
+    show-sql: true
+  flyway:
+    enabled: true
+
+springdoc:
+  api-docs:
+    enabled: true
+
+config:
+  jwt:
+    secret: D:L@c!m~pj0gbZK

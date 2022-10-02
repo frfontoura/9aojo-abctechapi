@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl_auto: none
+  flyway:
+    enabled: false
+
+springdoc:
+  swagger-ui:
+    displayRequestDuration: true
+  api-docs:
+    enabled: ${OPEN_API_ENABLED:false}
+
+config:
+  page:
+    size: 5
+  jwt:
+    secret: ${JWT_SECRET}
+    expire: 15

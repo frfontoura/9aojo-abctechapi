@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "Pré build phase"
+  build:
+    commands:
+      - echo "Building"
+      - ./gradlew clean test bootWar
+  post_build:
+    commands:
+      - echo "Movendo os arquivos que serão feitos upload"
+      - mv build/libs/*.war ./ROOT.war
+artifacts:
+  files:
+    - ROOT.war
