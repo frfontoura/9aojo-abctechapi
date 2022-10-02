@@ -36,7 +36,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:3.0.0")
 
     runtimeOnly("mysql:mysql-connector-java")
-    runtimeOnly("org.springframework.boot:spring-boot-starter-tomcat")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
