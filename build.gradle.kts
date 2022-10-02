@@ -34,8 +34,8 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-api:2.19.0")
     implementation("org.apache.logging.log4j:log4j-to-slf4j:2.19.0")
     implementation("io.github.microutils:kotlin-logging:3.0.0")
+    implementation("mysql:mysql-connector-java")
 
-    runtimeOnly("mysql:mysql-connector-java")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
