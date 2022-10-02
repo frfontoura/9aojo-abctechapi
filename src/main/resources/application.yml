@@ -9,7 +9,7 @@ spring:
     hibernate:
       ddl_auto: none
   flyway:
-    enabled: false
+    enabled: ${FLYWAY_ENABLED:false}
 
 springdoc:
   swagger-ui:
