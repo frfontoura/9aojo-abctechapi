@@ -2,6 +2,7 @@ package br.com.fiap.abctechapi.controller
 
 import br.com.fiap.abctechapi.application.OrderApplication
 import br.com.fiap.abctechapi.application.dto.OrderDTO
+import br.com.fiap.abctechapi.application.dto.OrderDetailDTO
 import br.com.fiap.abctechapi.application.dto.OrderLocationDTO
 import br.com.fiap.abctechapi.config.security.CurrentUser
 import br.com.fiap.abctechapi.enums.OrderStatus
@@ -66,6 +67,19 @@ class OrderController(
     ): Page<OrderDTO> {
         log.info { "m=findByOperatorAndStatusIn, i=initiated, userCode=${user.userCode}, orderStatusList=$orderStatusList, page=$page" }
         return orderApplication.findByOperatorIdAndStatusIn(user.id!!, orderStatusList, page)
+    }
+
+    @Operation(
+        summary = "Busca os detalhes de uma ordem",
+        description = "Busca os detalhes de uma ordem pelo código de ordem"
+    )
+    @GetMapping("/{orderCode}")
+    fun findByOrderCode(
+        @CurrentUser user: User,
+        @PathVariable orderCode: UUID
+    ): OrderDetailDTO {
+        log.info { "m=findByOrderCode, i=initiated, userCode=${user.userCode}, orderCode=$orderCode" }
+        return orderApplication.findByOrderCode(user, orderCode)
     }
 
 }

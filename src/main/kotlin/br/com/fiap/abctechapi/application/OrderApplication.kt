@@ -1,6 +1,7 @@
 package br.com.fiap.abctechapi.application
 
 import br.com.fiap.abctechapi.application.dto.OrderDTO
+import br.com.fiap.abctechapi.application.dto.OrderDetailDTO
 import br.com.fiap.abctechapi.application.dto.OrderLocationDTO
 import br.com.fiap.abctechapi.enums.OrderStatus
 import br.com.fiap.abctechapi.model.User
@@ -47,6 +48,16 @@ class OrderApplication(
             "totalElements=${ordersPage.totalElements}, totalPages=${ordersPage.totalPages}" }
 
         return ordersPage.map { order -> OrderDTO(order) }
+    }
+
+    fun findByOrderCode(user: User, orderCode: UUID): OrderDetailDTO {
+        log.info { "m=findByOrderCode, i=initiated, orderCode=$orderCode" }
+
+        val order = orderService.findByOrderCode(user, orderCode)
+
+        log.info {"m=findByOrderCode, i=finished, orderCode=$orderCode" }
+
+        return OrderDetailDTO(order)
     }
 
 }

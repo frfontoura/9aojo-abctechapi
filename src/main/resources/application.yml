@@ -19,7 +19,7 @@ springdoc:
 
 config:
   page:
-    size: 5
+    size: 10
   jwt:
     secret: ${JWT_SECRET}
     expire: 15

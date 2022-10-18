@@ -98,4 +98,19 @@ class OrderService(
         return orderRepository.findByOperatorIdAndStatusIn(operatorId, orderStatusList, PageRequest.of(page, pageSize, Sort.by("id")))
     }
 
+    fun findByOrderCode(user: User, orderCode: UUID): Order {
+        log.info { "m=findByOrderCode, i=initiated, orderCode=$orderCode" }
+
+        val order: Order = orderRepository.findByOrderCodeAndOperator(orderCode, user) ?: throw BusinessException(
+            message = "Ordem n\u00E3o encontrada",
+            description = "N\u00E3o foi poss\u00EDvel encontrar a ordem de c\u00F3digo=$orderCode"
+        ).also {
+            log.error { "m=findByOrderCode, e=order_not_found, orderCode=$orderCode" }
+        }
+
+        log.info { "m=findByOrderCode, i=finished, orderCode=$orderCode" }
+
+        return order
+    }
+
 }
